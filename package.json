@@ -4,9 +4,12 @@
   "scripts": {
     "postinstall": "node node_modules/protractor/bin/webdriver-manager update",
     "pretest": "",
-    "test": "node node_modules/protractor/built/cli.js protractor.config.js"
+    "test": "node node_modules/protractor/built/cli.js config.js",
+    "posttest": "mvn site -Dallure.results_pattern=allure-results"
   },
   "dependencies": {
-    "protractor": "^4.0.9"
+    "protractor": "^4.0.9",
+    "jasmine2-reporter": "^0.2.0",
+    "jasmine-allure-reporter": "1.0.1"
   }
 }
