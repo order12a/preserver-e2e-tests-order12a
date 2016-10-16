@@ -11,15 +11,20 @@ class GeneralNote extends BaseNote{
     }
 
     archiveNote(){
-        browser.actions().mouseUp(this.noteForm).click(this.archiveIcon).perform();
+        browser.waitForAngular();
+        browser.actions().mouseMove(this.noteForm).click(this.archiveIcon).perform();
+        browser.waitForAngular();
     }
 
     delete(){
-        browser.actions().mouseUp(this.noteForm).click(this.deleteIcon).perform();
+        browser.waitForAngular();
+        browser.actions().mouseMove(this.noteForm).click(this.deleteIcon).perform();
+        browser.waitForAngular();
     }
 
     clickChangeColor(){
-        browser.actions().mouseUp(this.noteForm).click(this.changeColorIcon).perform();
+        browser.waitForAngular();
+        browser.actions().mouseMove(this.noteForm).click(this.changeColorIcon).perform();
     }
 }
 

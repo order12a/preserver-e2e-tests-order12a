@@ -12,18 +12,18 @@ class CreateForm{
     }
 
     createNote(noteTitle, noteText){
+        browser.waitForAngular();
+        browser.wait(this.EC.visibilityOf(this.initialForm), this.timeout);
         this.initialForm.click();
         if(!(noteTitle === undefined) || noteTitle.length > 0){
-            // browser.wait(this.EC.visibilityOf(this.titleField), this.timeout);
-            // browser.sleep(5000);
+            browser.wait(this.EC.visibilityOf(this.titleField), this.timeout);
             this.titleField.sendKeys(noteTitle);
         }
         if(!(noteText === undefined) || noteText > 0){
-            // browser.sleep(5000);
+            browser.wait(this.EC.visibilityOf(this.noteTextField), this.timeout);
             this.noteTextField.sendKeys(noteText);
         }
-        // browser.sleep(5000);
-        // browser.wait(this.EC.elementToBeClickable(this.saveButton), this.timeout);
+        browser.wait(this.EC.elementToBeClickable(this.saveButton), this.timeout);
         this.saveButton.click();
     }
 }

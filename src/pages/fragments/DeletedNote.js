@@ -9,8 +9,10 @@ class DeletedNote extends BaseNote{
         this.deleteIcon = $('.fa-trash');
     }
 
-    deleteCompletely(){
-        browser.actions().mouseUp(this.noteForm).click(this.deleteIcon).perform();
+    clickDeleteCompletely(){
+        browser.waitForAngular();
+        browser.actions().mouseMove(this.noteForm).click(this.deleteIcon).perform();
+        browser.waitForAngular();
     }
 }
 

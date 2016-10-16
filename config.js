@@ -1,7 +1,7 @@
 "use strict";
 
 exports.config = {
-    baseUrl: 'http://www.hiteshbalar.com/preserver/',
+    baseUrl: 'http://www.hiteshbalar.com/preserver',
     specs: ['./specs/*_spec.js'],
     directConnect: true,
     framework: 'jasmine2',
@@ -18,7 +18,10 @@ exports.config = {
 
         afterEach(function () {
             browser.manage().deleteAllCookies();
-            browser.executeScript('window.sessionStorage.clear(); window.localStorage.clear();')
+            browser.executeScript('window.sessionStorage.clear(); '
+                + 'window.localStorage.clear();'
+                + 'window.indexedDB.deleteDatabase("_pouch_bin_notes_table");'
+                + 'window.indexedDB.deleteDatabase("_pouch_archive_notes_table");')
                 .then(undefined,
                     function (err) {
                         // Errors will be thrown when browser is on default data URL.
