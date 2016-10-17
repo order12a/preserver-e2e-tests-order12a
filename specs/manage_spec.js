@@ -4,14 +4,27 @@ let Application = require('../src/pages/Applicaton');
 
 describe('Note Manage Features Test', function () {
     let app = new Application();
+    function createNote(){
+        app.myNotesPage.createForm.createNote('Note title', 'Note text');
+    }
 
-    xit('change note color test', function () {
-        //TODO
+    describe('Other Features Tests', function () {
+        beforeEach(function () {
+            createNote();
+        });
+
+        it('change note color test', function () {
+            let color = 'darkgray';
+            app.myNotesPage.generalNote.clickChangeColor();
+            app.myNotesPage.generalNote.selectColor(color);
+            expect(app.myNotesPage.generalNote.isDisplayed()).toBeTruthy("New Note is not displayed");
+            expect(app.myNotesPage.generalNote.getColorOfNote()).toContain(color);
+        });
     });
 
     describe('Delete Feature Tests', function () {
         beforeEach(function () {
-            app.myNotesPage.createForm.createNote('Note title', 'Note text');
+            createNote();
         });
 
         it('delete note into recycle bin', function () {
@@ -31,7 +44,7 @@ describe('Note Manage Features Test', function () {
 
     describe('Archive Feature Test', function () {
         beforeEach(function () {
-            app.myNotesPage.createForm.createNote('Note title', 'Note text');
+            createNote();
         });
 
         it('archivation of note', function () {

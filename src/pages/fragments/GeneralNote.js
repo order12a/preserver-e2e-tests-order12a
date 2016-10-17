@@ -26,6 +26,17 @@ class GeneralNote extends BaseNote{
         browser.waitForAngular();
         browser.actions().mouseMove(this.noteForm).click(this.changeColorIcon).perform();
     }
+
+    selectColor(color){
+        browser.wait(protractor.ExpectedConditions.visibilityOf($('.btn-fab-mini')), 5000);
+        browser.waitForAngular();
+        $('.btn-' + color).click();
+        browser.waitForAngular();
+    }
+
+    getColorOfNote(){
+        return this.noteForm.getAttribute("class");
+    }
 }
 
 module.exports = GeneralNote;
