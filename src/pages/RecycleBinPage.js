@@ -16,10 +16,11 @@ class RecycleBinPage extends BasePage{
     }
 
     confirmDeleteAction(){
-        browser.wait(protractor.ExpectedConditions.visibilityOf(this.deletePromptButton), 5000);
+        browser.wait(protractor.ExpectedConditions.visibilityOf(this.deletePromptButton), this.waitTimeout);
         this.deletePromptButton.click();
-        browser.wait(protractor.ExpectedConditions.invisibilityOf(this.deletePromptButton), 5000);
+        browser.wait(protractor.ExpectedConditions.invisibilityOf(this.deletePromptButton), this.waitTimeout);
         browser.waitForAngular();
+        // browser.wait(protractor.ExpectedConditions.and(protractor.ExpectedConditions.visibilityOf(this.deletePromptButton)), 5000);
     }
 }
 

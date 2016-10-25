@@ -28,7 +28,7 @@ class GeneralNote extends BaseNote{
     }
 
     selectColor(color){
-        browser.wait(protractor.ExpectedConditions.visibilityOf($('.btn-fab-mini')), 5000);
+        browser.wait(protractor.ExpectedConditions.visibilityOf($('.btn-fab-mini')), BROWSER_TIMEOUT);
         browser.waitForAngular();
         $('.btn-' + color).click();
         browser.waitForAngular();

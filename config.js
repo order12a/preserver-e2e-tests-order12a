@@ -50,5 +50,12 @@ exports.config = {
                 done();
             })
         });
-    }
+    },
+    plugins: [{
+        package: 'protractor-console-plugin',
+        failOnWarning: false,
+        failOnError: true,
+        logWarnings: true,
+        exclude: "Array of strings and regex"
+    }]
 };

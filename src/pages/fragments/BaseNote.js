@@ -2,6 +2,7 @@
 
 class BaseNote{
     constructor(){
+        this.waitTimeout = 5000;
         this.noteForm = $('.grid-item');
         this.noteHeader = $('.my-note p strong');
         this.noteText = $('.my-note p:nth-child(2)');
