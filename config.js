@@ -6,7 +6,9 @@ exports.config = {
     directConnect: true,
     framework: 'jasmine2',
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'chrome',
+        'shardTestFiles': true,
+        'maxInstances': 2
     },
     useAllAngular2AppRoots: true,
 
@@ -56,6 +58,6 @@ exports.config = {
         failOnWarning: false,
         failOnError: true,
         logWarnings: true,
-        exclude: "Array of strings and regex"
+        // exclude: "Array of strings and regex"
     }]
 };
