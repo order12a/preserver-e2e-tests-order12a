@@ -6,7 +6,8 @@
     "pretest": "rm -rf allure-results/",
     "test": "node node_modules/protractor/built/cli.js config.js",
     "posttest": "mvn site -Dallure.results_pattern=allure-results",
-    "grunttest": ""
+    "gulptest_single": "gulp test_default",
+    "gulptest_parallel": "gulp test_parallel"
   },
   "dependencies": {
     "protractor": "^4.0.9",
@@ -14,7 +15,6 @@
     "jasmine-allure-reporter": "^1.0.1",
     "protractor-console-plugin": "^0.1.1",
     "gulp":"^3.9.1",
-    "gulp-protractor": "^3.0.0",
-    "grunt": "^1.0.1"
+    "gulp-protractor": "^3.0.0"
   }
 }
