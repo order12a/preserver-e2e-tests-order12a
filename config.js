@@ -3,13 +3,14 @@
 exports.config = {
     baseUrl: 'http://www.hiteshbalar.com/preserver',
     specs: ['./specs/*_spec.js'],
-    // directConnect: true,
-    // framework: 'jasmine2',
-    // capabilities: {
-    //     'browserName': 'chrome',
-    //     'shardTestFiles': true,
-    //     'maxInstances': 2
-    // },
+    seleniumAddress: 'http://localhost:4444/wd/hub',
+    directConnect: false,
+    framework: 'jasmine2',
+    capabilities: {
+        'browserName': 'chrome',
+        'shardTestFiles': true,
+        'maxInstances': 2
+    },
     useAllAngular2AppRoots: true,
 
     onPrepare: function () {

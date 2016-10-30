@@ -22,6 +22,7 @@ gulp.task('test_parallel', function () {//Parallel task with webdriver manager
         .pipe(protractor({
             configFile: "config.js",
             args: ['--baseUrl', 'http://www.hiteshbalar.com/preserver',
+                '--seleniumAddress', 'http://localhost:4444/wd/hub',
                 '--directConnect', false,
                 '--capabilities.shardTestFiles', true,
                 '--capabilities.maxInstances', 3,
