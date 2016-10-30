@@ -17,9 +17,7 @@ gulp.task('test_default', function() {//One thread task
         });
 });
 
-gulp.task('test_parallel', runConfig());//Parallel task with webdriver manager
-
-function runConfig() {
+gulp.task('test_parallel', function () {//Parallel task with webdriver manager
     gulp.src(["./specs/*_spec.js"])
         .pipe(protractor({
             configFile: "config.js",
@@ -32,7 +30,9 @@ function runConfig() {
         .on('error', function (e) {
             throw e;
         });
-}
+});
+
+
 
 // function getProtractorBinary(binaryName){
 //     var winExt = /^win/.test(process.platform)? '.cmd' : '';
