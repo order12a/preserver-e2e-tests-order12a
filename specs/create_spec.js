@@ -19,6 +19,13 @@ describe('Note Creation Feature Test', function () {
         expect(app.myNotesPage.generalNote.getText()).toContain(noteText, "Current tile is not equal to expected - " + noteText);
     });
 
+    it('create note with text only', function () {
+        let noteText = "Test Text";
+        app.myNotesPage.createForm.createNote('', noteText);
+        expect(app.myNotesPage.generalNote.isDisplayed()).toBeTruthy("New Note is not displayed");
+        expect(app.myNotesPage.generalNote.getText()).toContain("FAIL TEXT", "Current tile is not equal to expected - " + "FAIL TEXT");
+    });
+
     it('create empty note', function () {
         app.myNotesPage.createForm.createNote('', '');
         expect(app.myNotesPage.generalNote.isDisplayed()).toBeFalsy();

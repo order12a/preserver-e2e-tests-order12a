@@ -5,16 +5,13 @@
     "postinstall": "node node_modules/protractor/bin/webdriver-manager update",
     "pretest": "rm -rf allure-results/",
     "test": "node node_modules/protractor/built/cli.js config.js",
-    "posttest": "mvn site -Dallure.results_pattern=allure-results",
-    "grunttest": ""
+    "posttest": "mvn site -Dallure.results_pattern=allure-results"
   },
   "dependencies": {
     "protractor": "^4.0.9",
     "jasmine2-reporter": "^0.2.0",
-    "jasmine-allure-reporter": "^1.0.1",
+    "jasmine-allure-reporter": "latest",
     "protractor-console-plugin": "^0.1.1",
-    "gulp":"^3.9.1",
-    "gulp-protractor": "^3.0.0",
-    "grunt": "^1.0.1"
+    "mkdirp": "latest"
   }
 }
