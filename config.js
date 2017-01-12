@@ -7,8 +7,8 @@ exports.config = {
     framework: 'jasmine2',
     capabilities: {
         'browserName': 'chrome',
-        'shardTestFiles': true,
-        'maxInstances': 2
+        // 'shardTestFiles': true,
+        // 'maxInstances': 2
     },
     useAllAngular2AppRoots: true,
 
@@ -40,18 +40,48 @@ exports.config = {
         };
         jasmine.getEnv().addReporter(new JasmineReporter(options));//console reporter
 
+        var index = 0;
         var AllureReporter = require('jasmine-allure-reporter');//allure reporter
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: 'allure-results'
         }));
-        jasmine.getEnv().afterEach(function(done){
+
+        // takes screenshot on each failed expect
+        var originalAddMatcherResult = jasmine.Spec.prototype.addMatcherResult;
+        jasmine.Spec.prototype.addMatcherResult = function() {
+          ++index;
+          if (!arguments[0].passed()) {
             browser.takeScreenshot().then(function (png) {
                 allure.createAttachment('Screenshot', function () {
                     return new Buffer(png, 'base64')
                 }, 'image/png')();
                 done();
-            })
-        });
+            });
+          }
+          return originalAddMatcherResult.apply(this, arguments);
+        };
+
+        // takes screenshot on each failed spec (including timeout)
+        this.reportSpecResults = function(spec) {
+          if (!spec.results().passed()) {
+            browser.takeScreenshot().then(function (png) {
+                allure.createAttachment('Screenshot', function () {
+                    return new Buffer(png, 'base64')
+                }, 'image/png')();
+                done();
+            });
+          }
+          index = 0;
+        };
+
+        // jasmine.getEnv().afterEach(function(done){
+        //     browser.takeScreenshot().then(function (png) {
+        //         allure.createAttachment('Screenshot', function () {
+        //             return new Buffer(png, 'base64')
+        //         }, 'image/png')();
+        //         done();
+        //     })
+        // });
     },
     plugins: [{
         package: 'protractor-console-plugin',
